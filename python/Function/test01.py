@@ -1,6 +1,10 @@
-def calc_prod(lst):
-	def fn():
-		return reduce((lambda x,y: x*y),lst)
-	return fn
-f1 = calc_prod([1, 2, 3, 4])
-print( f1() )
+def f(x):
+	return x*x
+a=map(f,[1,2,3,4,5,6,7,8,9,10])
+print(list(a))
+
+from functools import reduce
+def add(x,y):
+	return x+y
+a=reduce(add,[1,2,3,4,5])
+print(a)
