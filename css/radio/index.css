@@ -1,0 +1,41 @@
+.goods-info {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.goods-info .tag-label {
+  padding-top: 7px;
+}
+.goods-info .goods-tags {
+  margin-top: 2rem;
+}
+
+.tags-select {
+  font-size: 0;
+}
+.tags-select > .tag-select {
+  display: inline-block;
+  font-size: 14px;
+  margin: 5px;
+  position: relative;
+  font-weight: normal;
+}
+.tags-select > .tag-select .name {
+  display: block;
+  line-height: 20px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.tags-select > .tag-select input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.tags-select > .tag-select input[type="radio"]:checked + .name {
+  border-color: #e3393c;
+}
+.tags-select > .tag-select input[type="radio"]:disabled + .name {
+  background: #eee;
+  color: #999;
+  cursor: not-allowed;
+}
