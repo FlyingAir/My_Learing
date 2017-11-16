@@ -37,7 +37,7 @@ console.log(copy(mainObj));
 //2. 属性描述符不能被复制。值为 false 的 “可写(writable)” 描述符在 objCopy 对象中为 true 
 //3. 只复制了 mainObj 的可枚举属性。
 //
-var o = {}; // Creates a new object
+var o = {}; // Creates a new object 
  
 Object.defineProperty(o, 'a', {
   value: 37,
@@ -61,3 +61,16 @@ console.log(o.a); // logs 37. The assignment didn't work.
   o.b = 3; // throws TypeError: "b" is read-only
   return o.b; // returns 2 without the line above
 }());
+
+
+
+/**
+ * 浅拷贝对象
+ */
+let obj = {
+  a: 1,
+  b: 2,
+};
+let objCopy = Object.assign({}, obj);
+console.log(objCopy);
+// Result - { a: 1, b: 2 }
