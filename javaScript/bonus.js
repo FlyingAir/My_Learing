@@ -1,5 +1,4 @@
-﻿
-var arg = [[1.75], [1.75], [1.81], [1.81], [1.68],[1.41],[1.75]];
+﻿var arg = [[1.75], [1.75], [1.81], [1.81], [1.68],[1.41],[1.75]];
 var a = doXINX(2, ...arg);
 var b = doXINX(4, ...arg);
 var c = doXINX(6, ...arg);
@@ -93,7 +92,6 @@ function getNext(indexArr, maxIndexesArr) {
             break;
         }
     }
-    console.log
     return indexArr;
 }
 
@@ -134,6 +132,20 @@ function doXINX(x, ...arg) {
 /**
  * 
  * 计算 M in N 组合
+ * 1 1 1 0 0 
+ * 1 1 0 1 0
+ * 1 0 1 1 0
+ * 0 1 1 1 0
+ * 1 1 0 0 1
+ * 1 0 1 0 1 
+ * 0 1 1 0 1
+ * 1 0 0 1 1
+ * 0 1 0 1 1
+ * 0 0 1 1 1
+ * 首先初始化，将数组前n个元素置1，表示第一个组合为前n个数。
+ * 然后从左到右扫描数组元素值的“10”组合，找到第一个“10”组合后将其变为“01”组合；
+ * 同时将其左边的所有“1”全部移动到数组的最左端。
+ * 当第一个“1”移动到数组的m-n的位置，即n个“1”全部移动到最右端时，就得到了最后一个组合。
  * @param  {[type]} x [description]
  * @return {[type]}   [description]
  */
@@ -191,6 +203,5 @@ function getIndexXINX(n, ...arg) {
         })
         content[key] = tempObj
     }
-    console.log(content)
     return content
 }
