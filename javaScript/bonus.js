@@ -1,27 +1,28 @@
+﻿
+var arg = [[1.75], [1.75], [1.81], [1.81], [1.68],[1.41],[1.75]];
+var a = doXINX(2, ...arg);
+var b = doXINX(4, ...arg);
+var c = doXINX(6, ...arg);
+console.log('a:'+a +'b:'+b+"c:"+c)
+console.log((a+b+c)*4) 
+
 /**
  * 计算总利率 ( N in 1 )
  * @param arguments  不同长度的数组
  * @example doXInOne([1,2,3],[3,5])
  * @return {[Number]} [总利率]
  */
-
-// doXInOne([1,2],[3,4],[1,5])
-
-// doXINX(2,[2.6,1.75],[2.08],[1.75,4],[1.81,1.8])
-// doXInOne([2.6,1.75],[2.08],[1.75,4],[1.81,1.8])
-
 function doXInOne(...arguments) {
-    if(arguments.length==1){
+    if (arguments.length == 1) {
         var arr = [];
-        var temp =arguments[0];
+        var temp = arguments[0];
 
-        for(var key in temp) {
+        for (var key in temp) {
             arr[key] = temp[key]
-        } 
-        arguments =arr;
+        }
+        arguments = arr;
     }
 
-    // console.log(arguments)
 
     //传入数组个数
     var length = arguments.length;
@@ -60,6 +61,7 @@ function getTotlalCombination() {
         total *= argu[i].length;
     }
     return total;
+
 }
 
 /**
@@ -91,6 +93,7 @@ function getNext(indexArr, maxIndexesArr) {
             break;
         }
     }
+    console.log
     return indexArr;
 }
 
@@ -117,72 +120,77 @@ function caculate(combination) {
  * @example doXInOne([1,2,3],[3,5])
  * @return {[Number]} [总利率]
  */
-function doXINX(x,...arg) {
-    var total =0;
-    for(var key in getIndexXINX(x,...arg)){
-       
-
-        total+=doXInOne(getIndexXINX(x,...arg)[key])
+function doXINX(x, ...arg) {
+    var total = 0;
+    for (var key in getIndexXINX(x, ...arg)) {
+        // console.log(getIndexXINX(x, ...arg)[key])
+        total += doXInOne(getIndexXINX(x, ...arg)[key])
     }
-    console.log("total="+total)
+    console.log("total=" + total)
+    return total;
 }
 
 
 /**
+ * 
  * 计算 M in N 组合
  * @param  {[type]} x [description]
  * @return {[type]}   [description]
  */
-function getIndexXINX(x,...arg) {
-    // console.log(arguments)
+function getIndexXINX(n, ...arg) {
     var argu = [].splice.call(arguments, (0, 1));
-    var length = argu.length;
-    var ind = 0;
+    var m = argu.length;
+    if(!n || n < 1) {
+        return [];
+    }
+ 
+    var resultArrs = [],
+        flagArr = [],
+        isEnd = false,
+        i, j, leftCnt;
+ 
+    for (i = 0; i < m; i++) {
+        flagArr[i] = i < n ? 1 : 0;
+    }
+ 
+    resultArrs.push(flagArr.concat());
+ 
+    while (!isEnd) {
+        leftCnt = 0;
+        for (i = 0; i < m - 1; i++) {
+            if (flagArr[i] == 1 && flagArr[i+1] == 0) {
+                for(j = 0; j < i; j++) {
+                    flagArr[j] = j < leftCnt ? 1 : 0;
+                }
+                flagArr[i] = 0;
+                flagArr[i+1] = 1;
+                var aTmp = flagArr.concat();
+                resultArrs.push(aTmp);
+                if(aTmp.slice(-n).join("").indexOf('0') == -1) {
+                    isEnd = true;
+                }
+                break;
+            }
+            flagArr[i] == 1 && leftCnt++;
+        }
+    }
     var all = {};
-    var indexInit = new Array(length);
-    for (var i = 0; i < length; i++) {
-        if (i < x) {
-            indexInit[i] = 1;
-
-        } else {
-            indexInit[i] = 0;
-        }
-    }
-
-    for (var i = x; i > 0; i--) {
-        var index = i;
-        for (var j = 0; j < length - x; j++) {
-            var _testCopy = [].concat(indexInit);
-            all[ind] = _testCopy;
-            indexInit[index - 1] = 0;
-            indexInit[index] = 1;
-            index++;
-            ind++; // console.log(indexInit)
-            if(i==1 && j==length-x-1){
-                var _testCopy = [].concat(indexInit);
-                all[ind] = _testCopy;
-            }    
-        }
-
-    }
-    
+    resultArrs.forEach(function(ele,ind){
+            all[ind] = ele;
+    })
     var content = {};
 
-    for (var key in all){
-        var tempObj= {};
-        var i =0;
-        all[key].forEach(function(ele,ind){
-            if(ele == 1){
+    for (var key in all) {
+        var tempObj = {};
+        var i = 0;
+        all[key].forEach(function(ele, ind) {
+            if (ele == 1) {
                 tempObj[i] = argu[ind];
                 i++;
             }
-        })  
-        content[key]=tempObj
+        })
+        content[key] = tempObj
     }
-
-    return  content
+    console.log(content)
+    return content
 }
-
-
-// getIndexXINX(3, [1], [2], [3], [4], [5])
-// doXInOne([2.6,1.75],[2.08,5.2],[1.75,4],[1.81,1.8])
