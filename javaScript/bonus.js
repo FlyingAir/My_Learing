@@ -1,10 +1,27 @@
-﻿var arg = [[1.75], [1.75], [1.81], [1.81], [1.68],[1.41],[1.75]];
-var a = doXINX(2, ...arg);
-var b = doXINX(4, ...arg);
-var c = doXINX(6, ...arg);
-console.log('a:'+a +'b:'+b+"c:"+c)
-console.log((a+b+c)*4) 
+﻿
 
+// var arg = [[1.75], [1.75], [1.81], [1.81], [1.68],[1.41],[1.75]];
+// var a = doXINX(2, ...arg);
+// var b = doXINX(4, ...arg);
+// var c = doXINX(6, ...arg);
+// console.log('a:'+a +'b:'+b+"c:"+c)
+// console.log((a+b+c)*4) 
+
+var a =doFixed(4,[2,4,6],[1.75], [1.75], [1.81], [1.81], [1.68],[1.41],[1.75]);
+console.log(a)
+/**
+ * 综合
+ */
+
+function doFixed(multipleNum,chuanArr,...rateArr){
+    var total = 0;
+    chuanArr.forEach(function(ele){
+    
+        total+=doXINX(ele,...rateArr);
+        console.log(total)
+    });
+    return total*multipleNum;
+}
 /**
  * 计算总利率 ( N in 1 )
  * @param arguments  不同长度的数组
