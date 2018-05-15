@@ -7,7 +7,7 @@
 // console.log('a:'+a +'b:'+b+"c:"+c)
 // console.log((a+b+c)*4) 
 
-var a =doFixed(4,[2,4,6],[1.75], [1.75], [1.81], [1.81], [1.68],[1.41],[1.75]);
+var a =doFixed(2,[3],[2], [3], [1], [4]);
 console.log(a)
 /**
  * 综合

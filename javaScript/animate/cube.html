@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="cube.css">
+</head>
+
+<body>
+    <div class="demo">
+        <div class="cube show-default">
+            <div class="cube-face is-front"></div>
+            <div class="cube-face is-back"></div>
+            <div class="cube-face is-right"></div>
+            <div class="cube-face is-left"></div>
+            <div class="cube-face is-top"></div>
+            <div class="cube-face is-bottom"></div>
+        </div>
+    </div>
+    <ol id="btn">
+        <li class="to-top">top</li>
+        <li class="to-bottom">bottom</li>
+        <li class="to-left">left</li>
+        <li class="to-right">right</li>
+        <li class="to-front">front</li>
+        <li class="to-back">back</li>
+    </ol>
+    <script src='https://cdn.bootcss.com/jquery/1.12.4/jquery.js'></script>
+    <script>
+        var cube = document.getElementsByClassName('cube');
+        var lis = document.getElementById('btn').getElementsByTagName('li');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].addEventListener('click', function () {
+                switch (this.className) {
+                    case ("to-top"):
+                        $('.cube').removeClass().addClass('cube show-top')
+                        break;
+                    case ("to-bottom"):
+                        $('.cube').removeClass().addClass('cube show-bottom')
+                        break;
+                    case ("to-left"):
+                        $('.cube').removeClass().addClass('cube show-left')
+                        break;
+                    case ("to-right"):
+                        $('.cube').removeClass().addClass('cube show-right')
+                        break;
+                    case ("to-front"):
+                        $('.cube').removeClass().addClass('cube show-front')
+                        break;
+                    case ("to-back"):
+                        $('.cube').removeClass().addClass('cube show-back')
+                        break;
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,21 +1,14 @@
-function isPrime(value) {
-    if (!isPrime.answers) isPrime.answers = {};
-    if (isPrime.answers[value] != null) {
-        return isPrime.answers[value]
-    }
-    var prime = value != 1; //1 不是素数
-    for (var i = 2; i < value; i++) {
-        if (value % 2 === 0) {
-            prime = false;
-            break;
-        }
-    }
-    return isPrime.answers[value] = prime
-}
-console.log(isPrime(5));
-console.log(isPrime.answers[5]);
+// for (var index = 0; index < arr.length; index++) {
+//     if(newArr.indexOf(arr[index])== -1){
+//         newArr.push(arr[index]);
+//     }
+// }
+var arr = [1, 2, 3, 4, 3, 2, 1];
 
-function getFullName(user){
-    const {firstName,lastName} = user;
-    return `$(first)$(lastName)`;
+var arr = arr.sort();
+for (var i = 0; i < arr.length-1; i++) {
+    if(arr[i] == arr[i+1]){
+        arr.splice(i,1)
+    }
 }
+console.log(arr)

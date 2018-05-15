@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>  
+<title>JS播放声音</title>  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>  
+</head>  
+<body>  
+<script language="javascript">  
+
+function playVoice()  
+    {  
+      var borswer = window.navigator.userAgent.toLowerCase();  
+      if(borswer.indexOf( "ie" ) >= 0)  
+      {  
+        //IE内核浏览器  
+        var strEmbed = '<embed name="embedPlay" src="dingdong.wav" autostart="true" hidden="true" loop="false"></embed>';  
+        if ($("body").find("embed").length <= 0){  
+            $("body").append(strEmbed);  
+        }  
+       var embed = document.embedPlay;  
+  
+        //浏览器不支持 audio，则使用 embed 播放  
+        embed.volume = 100;  
+      }else{  
+        //非IE内核浏览器  
+        var strAudio = "<audio id='audioPlay' src='dingdong.wav' hidden='true'>";  
+        if($("body").find("audio").length <= 0){  
+         $("body").append(strAudio);  
+        }  
+        var audio = document.getElementById("audioPlay");  
+  
+        //浏览器支持 audio  
+        audio.play();  
+      }  
+    }  
+</script>  
+</body>  
+</html>  
