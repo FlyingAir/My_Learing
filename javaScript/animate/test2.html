@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            perspective: 1000px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            display: inline-block;
+            margin-top: 200px;
+            margin-left: 0px;
+            transition: 1s all;
+        }
+
+        .box:hover {
+            width: 200px;
+            height: 200px;
+        }
+
+        .card {
+            position: relative;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            transform-style: preserve-3d;
+            transition: 2s all;
+
+        }
+
+        .card:hover {
+            transform: rotateY(180deg)
+        }
+
+        .card figure {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #000;
+        }
+
+        .card-front {
+            background: #fdfdfa;
+            z-index: 999;
+        }
+
+        .card-back {
+            background: #dfdffa;
+            transform: rotateY( 180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <!-- 卡牌正面 -->
+        <figure class="card-front">1</figure>
+        <!-- 卡牌反面 -->
+        <figure class="card-back">2</figure>
+    </div>
+    <div class="box"></div>
+</body>
+
+</html>
