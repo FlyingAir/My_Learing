@@ -1,5 +1,27 @@
 $cube-size:100px;
 $cube-radius:$cube-size/2;
+@keyframes autoRotate {
+    0%,
+    180% {
+        transform: translateZ(-$cube-radius);
+    } // show-back
+    16.5% {
+        transform: translateZ( - $cube-radius) rotateX( -180deg);
+    } // show-left
+    33% {
+        transform: translateZ( - $cube-radius) rotateY( 90deg);
+    } // show-right
+    49.5% {
+        transform: translateZ( - $cube-radius) rotateY( -90deg);
+    } // show-top
+    66% {
+        transform: translateZ( - $cube-radius) rotateX( -90deg);
+    } // show-bottom 
+    82.5% {
+        transform: translateZ( - $cube-radius) rotateX( 90deg);
+    }
+}
+
 .demo {
     width: $cube-size;
     height: $cube-size;
@@ -11,7 +33,7 @@ $cube-radius:$cube-size/2;
         height: 100%;
         transform-style: preserve-3d;
         position: absolute;
-        transition: transform ease 1s;
+        animation: autoRotate 4s ease 0s infinite alternate;
         &.show-default {
             transform: translateZ( - $cube-radius) rotateY( -15deg) rotateX(-15deg);
         }
@@ -45,7 +67,7 @@ $cube-radius:$cube-size/2;
             backface-visibility: visible;
             &.is-front {
                 background-color: lightblue;
-                transform: translateZ( $cube-radius); 
+                transform: translateZ( $cube-radius);
             }
             &.is-back {
                 background-color: lightcoral;

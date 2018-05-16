@@ -1,3 +1,25 @@
+@keyframes autoRotate {
+  0%,
+  180% {
+    transform: translateZ(-50px);
+  }
+  16.5% {
+    transform: translateZ(-50px) rotateX(-180deg);
+  }
+  33% {
+    transform: translateZ(-50px) rotateY(90deg);
+  }
+  49.5% {
+    transform: translateZ(-50px) rotateY(-90deg);
+  }
+  66% {
+    transform: translateZ(-50px) rotateX(-90deg);
+  }
+  82.5% {
+    transform: translateZ(-50px) rotateX(90deg);
+  }
+}
+
 .demo {
   width: 100px;
   height: 100px;
@@ -11,7 +33,7 @@
   height: 100%;
   transform-style: preserve-3d;
   position: absolute;
-  transition: transform ease 1s;
+  animation: autoRotate 4s ease 0s infinite alternate;
 }
 
 .demo .cube.show-default {
