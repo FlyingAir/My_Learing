@@ -12,7 +12,6 @@ console.log(a)
 /**
  * 综合
  */
-
 function doFixed(multipleNum,chuanArr,...rateArr){
     var total = 0;
     chuanArr.forEach(function(ele){
