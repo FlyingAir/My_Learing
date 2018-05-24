@@ -50,9 +50,3 @@ identity1('linkFly')
 identity1(0)
 identity1(true)
 
-function fettch<T>(url:string):Promise<T>{
-    //远程请求数据并返回结果
-    return http(url).then(data =>{
-        return data as T
-    })
-}
